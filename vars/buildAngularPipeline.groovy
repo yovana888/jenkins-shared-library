@@ -21,14 +21,14 @@ def call(Map config) {
             stage('Build & Test') {
                 agent {
                     docker {
-                        image 'node:18-alpine'
+                        image 'node:20-alpine'
                         args '-v /tmp:/tmp'
                     }
                 }
                 steps {
                     sh 'npm install'
                     sh 'npm run test -- --coverage --ci --maxWorkers=2'
-                    sh 'npm run build:prod'
+                    sh "npm run build:${env.DEPLOY_ENV}"
                 }
             }
 
