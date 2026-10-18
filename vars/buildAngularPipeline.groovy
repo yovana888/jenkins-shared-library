@@ -28,7 +28,6 @@ def call(Map config) {
                 steps {
                     sh 'npm install'
                     sh 'npm run test -- --coverage --ci --maxWorkers=2'
-                    sh "npm run build:${env.DEPLOY_ENV}"
                 }
             }
 
