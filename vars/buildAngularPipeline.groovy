@@ -64,6 +64,14 @@ def call(Map config) {
                         }
                     }
                 }
+
+                post {
+                    always {
+                        // Limpia contenedores, imágenes huérfanas y el caché de construcción (builder cache)
+                        sh 'docker system prune -f && docker builder prune -f'
+                        cleanWs()
+                    }
+                }
             }
         }
     }
