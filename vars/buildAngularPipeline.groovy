@@ -3,9 +3,9 @@ def call(Map config) {
         agent any
 
         environment {
-            DEPLOY_ENV = config.deploymentEnvironment ?: 'dev'
-            IMAGE_REPO = config.imageRepo ?: 'webapp-angular'
-            AWS_REGION = config.awsRegion ?: 'us-east-1'
+            DEPLOY_ENV = "${config.deploymentEnvironment ?: 'dev'}"
+            IMAGE_REPO = "${config.imageRepo ?: 'webapp-angular'}"
+            AWS_REGION = "${config.awsRegion ?: 'us-east-1'}"
         }
 
         stages {
